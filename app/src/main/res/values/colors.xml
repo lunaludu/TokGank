@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1E90FF</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#F000</color>
+
+    <color name="tab_checked">#3F51B5</color>
+    <color name="tab_unchecked">#757575</color>
+    <!--字体背景色-->
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorHhui">#F223</color>
+    <!--分割线-->
+    <color name="colorLineItem">#FFDDDDDD</color>
+    <!--背景色-->
+    <color name="colorLlis">#FFDDDDDD</color>
+
+</resources>
