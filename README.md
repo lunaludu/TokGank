@@ -8,7 +8,7 @@ Created by Hugh
 
 
 </br>
-<Img src="https://github.com/lunaludu/TokGank/blob/master/app/src/main/res/drawable/Screenshot1540577274.png" witdth=50% />
+<Img src="https://github.com/lunaludu/TokGank/blob/master/app/src/main/res/drawable/Screenshot1540577274.png" witdth="250" height="250" />
 
 </br>
 
