@@ -6,8 +6,9 @@ Created by Hugh
 
 ![Image text](https://github.com/lunaludu/TokGank/blob/master/app/src/main/res/drawable/Screenshot1540577263.png)
 
+
 </br>
-![Image text](https://github.com/lunaludu/TokGank/blob/master/app/src/main/res/drawable/Screenshot1540577274.png）
+<Img src="https://github.com/lunaludu/TokGank/blob/master/app/src/main/res/drawable/Screenshot1540577274.png" witdth=50% />
 
 </br>
 
