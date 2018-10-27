@@ -10,8 +10,9 @@ Created by Hugh
 
 </br>
 
-第三方库
 
+# Thanks
+干货集中营
 BaseRecyclerViewAdapterHelper
 </br>
 </br>
