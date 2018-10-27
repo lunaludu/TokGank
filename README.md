@@ -13,8 +13,8 @@ Created by Hugh
 
 # Thanks
 干货集中营
-BaseRecyclerViewAdapterHelper
 </br>
+BaseRecyclerViewAdapterHelper
 </br>
 
 
