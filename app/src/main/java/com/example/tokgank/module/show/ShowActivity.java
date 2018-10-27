@@ -108,68 +108,6 @@ public class ShowActivity extends BaseActivity {
 
 
 
-//        mButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                PermisionUtils.verifyStoragePermissions(ShowActivity.this);
-//
-//                new Thread(new Runnable() {
-//                    File currentFile;
-//
-//                    Bitmap mBitmap=null;
-//                    @Override
-//                    public void run() {
-//
-//
-//
-//
-////                            String url="http://www.guolin.tech/book.png";
-//                        FutureTarget<File> futureTarget=Glide.with(mContext)
-//                                .load(url)
-//                                .downloadOnly(100,100);
-//
-//
-//                        try{
-//                            int byts=0;
-//                            int byt=0;
-//                            int x=(int)(Math.random())*12433;
-//                            String ss="mm"+x+"/+1212.png";
-//                            String newp=Environment.getExternalStorageDirectory().getAbsolutePath()+ss;
-//                            File mFile=futureTarget.get();
-//                            String path=mFile.getAbsolutePath();
-//
-//                            File old=new File(path);
-//                            InputStream inputStream=new FileInputStream(old);
-//                            FileOutputStream fileOutputStream=new FileOutputStream(newp);
-//                            byte[] bu=new byte[1024];
-//                            int len;
-//                            while ((byt=inputStream.read(bu))!=-1){
-//                                byts+=byt;
-//                                System.out.println(byts);
-//                                fileOutputStream.write(bu,0,byt);
-//                            }
-//                            inputStream.close();
-//                            mContext.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,Uri.fromFile(new File(path))));
-//
-//                        }catch (InterruptedException e){
-//                            e.printStackTrace();
-//                        }catch (Exception e){
-//                            e.printStackTrace();
-//                        }
-//                    }
-//
-//
-//                }).start();
-////                mIPicturePresenter.getPiceture();
-//                Log.d("ShowActivity","HHss");
-//            }
-//        });
-
-
-
-
-
         Glide.with(this).load(url).listener(new RequestListener<String, GlideDrawable>() {
             @Override
             public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {

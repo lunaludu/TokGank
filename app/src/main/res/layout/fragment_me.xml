@@ -115,7 +115,7 @@
                 android:id="@+id/tttsst"
                 style="@style/menuItem"
                 android:clickable="true"
-                android:text="捡个钱包"
+                android:text="@string/fragment_me_pay"
                 />
 
             <View
