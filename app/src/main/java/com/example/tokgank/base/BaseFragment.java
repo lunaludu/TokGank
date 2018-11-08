@@ -27,28 +27,8 @@ public abstract class BaseFragment extends Fragment {
     protected abstract void onVisible();
     protected abstract boolean getUserVis();
 //    protected abstract boolean getPrepared();
-
     public boolean isVisible;
-
     public boolean isPrepared = false;
-
-
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (getUserVis()){
-            isVisible = true;
-            onVisible();
-        }else {
-            isVisible = false;
-            onInVisible();
-        }
-    }
-
-    protected void onInVisible(){
-
-    }
 
 
     @Nullable
@@ -56,9 +36,7 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (getLayoutId() != 0){
             return inflater.inflate(getLayoutId(),container,false);
-//            return null;
         }else {return super.onCreateView(inflater,container,savedInstanceState);}
-
     }
 
     @Override
@@ -78,4 +56,21 @@ public abstract class BaseFragment extends Fragment {
    protected boolean getPrepared(){
        return isPrepared;
    }
+
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (getUserVis()){
+            isVisible = true;
+            onVisible();
+        }else {
+            isVisible = false;
+            onInVisible();
+        }
+    }
+
+    protected void onInVisible(){
+
+    }
 }

@@ -131,7 +131,7 @@ public class PictureFragment extends BaseFragment implements PictureContract.IPi
                     @Override
                     public void run() {
 
-                        if (mCurrentCounter>=mResultsBeen.size()){
+                        if (mCurrentCounter >= mResultsBeen.size()){
                             mFuliAdapter.loadMoreEnd();
                             Log.d("HomeActivity","LOAD.end");
                         }else {

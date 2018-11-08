@@ -1,6 +1,5 @@
 # TokGank
 
-Created by Hugh
 
 # 预览
 
@@ -12,11 +11,16 @@ Created by Hugh
 
 
 # Thanks
+
+##数据来源
 干货集中营
 </br>
+
+##第三方库
+Glide
+Butterknife
 BaseRecyclerViewAdapterHelper
 </br>
 
 
-
-关于作者 </br>
+</br>
