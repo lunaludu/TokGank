@@ -1,7 +1,6 @@
 package com.example.tokgank.module.web;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
+
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -10,7 +9,7 @@ import com.example.tokgank.base.BaseActivity;
 
 import butterknife.BindView;
 
-public class SearchActivity extends BaseActivity{
+public class SearchActivity extends BaseActivity {
     @BindView(R.id.web_vedios)
     WebView mWebView;
 

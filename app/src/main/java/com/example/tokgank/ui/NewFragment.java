@@ -34,6 +34,11 @@ public class NewFragment extends BaseFragment {
 
 
     @Override
+    protected boolean getUserVis() {
+        return false;
+    }
+
+    @Override
     protected int getLayoutId() {
         return R.layout.fragment_category;
     }
@@ -47,16 +52,16 @@ public class NewFragment extends BaseFragment {
     protected void init() {
 
         List<Fragment> fragments = new ArrayList<>();
-        List<String> mList=new ArrayList<>();
+        List<String> mList = new ArrayList<>();
 
-        for (int i=0;i<tabs.length;i++){
-            Fragment fragment= CategoryFragment.newInstance(tabs[i]);
+        for (int i = 0;i < tabs.length;i++){
+            Fragment fragment = CategoryFragment.newInstance(tabs[i]);
             fragments.add(fragment);
             mList.add(tabs[i]);
             Log.d("HomeActivity",tabs[i]);
         }
         viewPagerAdapter=new ViewPagerAdapter(getChildFragmentManager(),fragments,mList);
-//        mViewPager.setOffscreenPageLimit(6);
+
         mViewPager.setCurrentItem(1);
 //        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 //        tabLayout.setTabMode(TabLayout.MODE_FIXED);

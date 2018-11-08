@@ -1,12 +1,12 @@
 package com.example.tokgank.module.category;
 
 
-import android.content.Context;
 import android.util.Log;
 
 import com.example.tokgank.config.Config;
 import com.example.tokgank.model.GankoEntity;
 import com.example.tokgank.net.NetWork;
+
 import rx.Subscriber;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -35,7 +35,7 @@ public class CategoryPresenter implements CategoryContract.ICategoryPresenter{
 
     @Override
     public void onError() {
-        if(subscription!=null&&subscription.isUnsubscribed()){
+        if(subscription != null&&subscription.isUnsubscribed()){
             subscription.unsubscribe();
         }
     }
@@ -43,13 +43,9 @@ public class CategoryPresenter implements CategoryContract.ICategoryPresenter{
     @Override
     public void getCategoryItem(final boolean isRefresh) {
 
-        if (isRefresh){
-            mPage=1;
-        }else{
-            mPage++;
-        }
+        mPage = (isRefresh == true)?1 : mPage++;
 
-        subscription= NetWork.getInstance().getSerre()
+        subscription = NetWork.getInstance().getSerre()
                 .getTopMovie(iCategoryView.getCategoryName(), Config.CATEGORY_COUNT,mPage)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -60,7 +56,7 @@ public class CategoryPresenter implements CategoryContract.ICategoryPresenter{
 
                     @Override
                     public void onError(Throwable e) {
-                            Log.d("HomeActivity","NEW LOAD.fail");
+
                     }
 
                     @Override

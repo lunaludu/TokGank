@@ -7,8 +7,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.tokgank.R;
@@ -21,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by Hugh on 2018/4/27.
@@ -31,19 +28,21 @@ public class PictureFragment extends BaseFragment implements PictureContract.IPi
 
     @BindView(R.id.reecView)
     RecyclerView mRecyclerView;
-//    @BindView(R.id.web_caidan)
-//    Button mButton;
     PictureContract.IPicturePresenter mIPicturePresenter;
     SwipeRefreshLayout swipeRefreshLayout;
     int mCurrentCounter;
-    boolean isErr=true;
-    int count;
-    int mPage=1;
-    int TOTAL_COUNTER=10;
+    boolean isErr = true;
+    boolean isssLoad = true;
+    int mPage = 1;
 
     private FuliRecyclerAdapter mFuliAdapter;
-    List<Fuli.ResultsBean> mResultsBeen=new ArrayList<>();
+    List<Fuli.ResultsBean> mResultsBeen = new ArrayList<>();
 
+
+    @Override
+    protected boolean getUserVis() {
+        return false;
+    }
 
     @Override
     protected int getLayoutId() {
@@ -51,9 +50,19 @@ public class PictureFragment extends BaseFragment implements PictureContract.IPi
     }
 
     @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        if (isVisibleToUser && isssLoad){
+            Log.d("HomeActivity","onds");
+            isssLoad = false;
+            initPicData();
+        }
+        super.setUserVisibleHint(isVisibleToUser);
+    }
+
+    @Override
     protected void init() {
-//        Button mButton=(Button) getView().findViewById(R.id.web_caidan);
-        mIPicturePresenter=new PicturePresenter(this,getContext());
+
+        mIPicturePresenter = new PicturePresenter(this,getContext());
 
         mIPicturePresenter.subscribe();
 //        onVisible();
@@ -71,8 +80,8 @@ public class PictureFragment extends BaseFragment implements PictureContract.IPi
 
     @Override
     public void getPictureItem(Fuli fuli) {
-            mResultsBeen=fuli.getResults();
-            initPicData();
+            mResultsBeen = fuli.getResults();
+//            initPicData();
     }
 
     @Override
@@ -100,16 +109,15 @@ public class PictureFragment extends BaseFragment implements PictureContract.IPi
     }
 
     public void initPicData(){
-        GridLayoutManager layoutManager=new GridLayoutManager(getActivity(),2);
-        mRecyclerView.setLayoutManager(layoutManager);
-        mFuliAdapter=new FuliRecyclerAdapter(R.layout.fuli_item,mResultsBeen);
+
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));
+        mFuliAdapter = new FuliRecyclerAdapter(R.layout.fuli_item,mResultsBeen);
 
         mFuliAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-//                int pos=holder.getAdapterPosition();
-                String url=mResultsBeen.get(position).getUrl();
-                Intent intent=new Intent(getActivity(), ShowActivity.class);
+                String url = mResultsBeen.get(position).getUrl();
+                Intent intent = new Intent(getActivity(), ShowActivity.class);
                 intent.putExtra("URL",url);
                 getActivity().startActivity(intent);
             }
@@ -129,16 +137,13 @@ public class PictureFragment extends BaseFragment implements PictureContract.IPi
                         }else {
                             if (isErr){
                                 mPage++;
-//
                                 mIPicturePresenter.getPictureItem(false);
-
-//                                mFuliAdapter.addData(mResultsBeens);
-                                mCurrentCounter=mFuliAdapter.getData().size();
+                                mCurrentCounter = mFuliAdapter.getData().size();
                                 mFuliAdapter.loadMoreComplete();
 
                                 Log.d("HomeActivity","LOAD.complete");
                             }else {
-                                isErr=true;
+                                isErr = true;
 //                                Toast.makeText(getActivity(),R.string.network_err,Toast.LENGTH_LONG).show();
                                 mFuliAdapter.loadMoreFail();
                                 Log.d("HomeActivity","LOAD.fail");

@@ -4,7 +4,6 @@ package com.example.tokgank.ui;
 import android.content.Intent;
 import android.view.View;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 
 import com.example.tokgank.R;
@@ -13,8 +12,6 @@ import com.example.tokgank.module.web.SearchActivity;
 
 import butterknife.BindView;
 
-import static com.example.tokgank.R2.id.webView;
-
 public class VedioFragment extends BaseFragment {
 
     @BindView(R.id.button_query)
@@ -22,6 +19,10 @@ public class VedioFragment extends BaseFragment {
 //    @BindView(R.id.web_vedios)
     WebView mWebView;
 
+    @Override
+    protected boolean getUserVis() {
+        return false;
+    }
 
     @Override
     protected int getLayoutId() {
@@ -38,7 +39,7 @@ public class VedioFragment extends BaseFragment {
        mButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               Intent intent=new Intent(getContext(), SearchActivity.class);
+               Intent intent = new Intent(getContext(), SearchActivity.class);
                startActivity(intent);
            }
        });

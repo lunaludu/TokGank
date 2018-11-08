@@ -1,9 +1,9 @@
 package com.example.tokgank.module.web;
 
+
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -17,7 +17,7 @@ import com.example.tokgank.base.BaseActivity;
 
 import butterknife.BindView;
 
-public class WebActivity extends BaseActivity {
+public class CategoryWebviewActivity extends BaseActivity {
 
     public static final String TITLE="DSS";
     @BindView(R.id.webView)
@@ -38,15 +38,15 @@ public class WebActivity extends BaseActivity {
     public void initView() {
 
         getSupportActionBar().hide();
-        String url=getIntent().getStringExtra("url");
-        String desc=getIntent().getStringExtra("desc");
+        String url = getIntent().getStringExtra("url");
+        String desc = getIntent().getStringExtra("desc");
 
         textView.setText(desc);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
-                Log.d("WebActivity","Back...");
+                Log.d("CategoryWebviewActivity","Back...");
             }
         });
 
@@ -66,7 +66,7 @@ public class WebActivity extends BaseActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode== KeyEvent.KEYCODE_BACK&&webView.canGoBack()){
+        if(keyCode == KeyEvent.KEYCODE_BACK&&webView.canGoBack()){
             webView.goBack();
             return true;
         }

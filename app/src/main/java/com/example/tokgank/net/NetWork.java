@@ -17,8 +17,8 @@ public class NetWork {
     }
 
     private NetWork(){
-        String baseUrl="http://gank.io/api/";
-        Retrofit retrofit=new Retrofit.Builder()
+        String baseUrl = "http://gank.io/api/";
+        Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
@@ -28,10 +28,10 @@ public class NetWork {
 
 //饿汉式单例模式
     public static NetWork getInstance(){
-        if (instance==null){
+        if (instance == null){
 //            synchronized (NetWork.class){
 //                if (instance==null){
-                    instance=new NetWork();
+                    instance = new NetWork();
 //                }
             }
 //        }

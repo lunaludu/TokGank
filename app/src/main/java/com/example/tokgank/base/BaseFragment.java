@@ -1,9 +1,5 @@
 package com.example.tokgank.base;
 
-/**
- * Created by Hugh on 2018/5/30.
- */
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +10,12 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
+/**
+ * Created by Hugh on 2018/5/30.
+ */
+
+
+
 
 public abstract class BaseFragment extends Fragment {
 
@@ -23,19 +25,23 @@ public abstract class BaseFragment extends Fragment {
     protected abstract void init();
 //    protected abstract void loadData();
     protected abstract void onVisible();
+    protected abstract boolean getUserVis();
 //    protected abstract boolean getPrepared();
+
     public boolean isVisible;
-    public boolean isPrepared=false;
+
+    public boolean isPrepared = false;
+
 
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (getUserVisibleHint()){
-            isVisible=true;
+        if (getUserVis()){
+            isVisible = true;
             onVisible();
         }else {
-            isVisible=false;
+            isVisible = false;
             onInVisible();
         }
     }
@@ -48,8 +54,9 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (getLayoutId()!=0){
+        if (getLayoutId() != 0){
             return inflater.inflate(getLayoutId(),container,false);
+//            return null;
         }else {return super.onCreateView(inflater,container,savedInstanceState);}
 
     }
@@ -57,11 +64,9 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        init();
-//        isPrepared=true;
-        unbinder= ButterKnife.bind(this,view);
+        unbinder = ButterKnife.bind(this,view);
         init();
-        isPrepared=true;
+        isPrepared = true;
     }
 
     @Override

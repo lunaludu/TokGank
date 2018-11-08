@@ -5,17 +5,8 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.Log;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.FutureTarget;
-import com.bumptech.glide.request.target.BitmapImageViewTarget;
-import com.example.tokgank.config.Config;
 import com.example.tokgank.model.Fuli;
 import com.example.tokgank.net.NetWork;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Future;
 
 import rx.Subscriber;
 import rx.Subscription;
@@ -36,8 +27,8 @@ public class PicturePresenter implements PictureContract.IPicturePresenter{
 
 
     public PicturePresenter(PictureContract.IPictureView mIPictureView,Context context) {
-        this.mIPictureView=mIPictureView;
-        this.mContext=context;
+        this.mIPictureView = mIPictureView;
+        this.mContext = context;
     }
 
     @Override
@@ -47,7 +38,7 @@ public class PicturePresenter implements PictureContract.IPicturePresenter{
 
     @Override
     public void onError() {
-        if(subscription!=null&&subscription.isUnsubscribed()){
+        if(subscription != null&&subscription.isUnsubscribed()){
             subscription.unsubscribe();
         }
     }
@@ -56,33 +47,18 @@ public class PicturePresenter implements PictureContract.IPicturePresenter{
     @Override
     public void getPiceture() {
 
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try{
-//                    String url="http://www.guolin.tech/book.png";
-//                    FutureTarget<Bitmap> futureTarget=Glide.with(mContext)
-//                            .load(url)
-//                            .asBitmap()
-//                            .into(20,20);
-//                    mBitmap=futureTarget.get();
-//                }catch (Exception e){
-//                    e.printStackTrace();
-//                }
-//            }
-//        }).start();
-
     }
 
     @Override
     public void getPictureItem(final boolean isRefresh) {
-        if (isRefresh){
-            mPage=1;
-        }else{
-            mPage++;
-        }
+//        if (isRefresh){
+//            mPage=1;
+//        }else{
+//            mPage++;
+//        }
+        mPage = (isRefresh == true)?1 : mPage++;
 
-        subscription= NetWork.getInstance().getSerre()
+        subscription = NetWork.getInstance().getSerre()
                 .getFuli("福利",20,mPage)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

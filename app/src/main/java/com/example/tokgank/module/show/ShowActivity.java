@@ -4,9 +4,7 @@ package com.example.tokgank.module.show;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Environment;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,7 +13,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.FutureTarget;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.example.tokgank.R;
@@ -25,14 +22,11 @@ import com.github.chrisbanes.photoview.OnPhotoTapListener;
 import com.github.chrisbanes.photoview.PhotoView;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
 import butterknife.BindView;
-
 
 /**
  * Created by Hugh on 2018/5/23.
@@ -57,7 +51,7 @@ public class ShowActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        mContext=getApplicationContext();
+        mContext = getApplicationContext();
         getSupportActionBar().hide();
 
 
@@ -82,13 +76,16 @@ public class ShowActivity extends BaseActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-//                        File file=null;
                         PermisionUtils.verifyStoragePermissions(ShowActivity.this);
-                        Bitmap bitmap=null;
+                        Bitmap bitmap = null;
 
                         try{
-                            bitmap=Glide.with(mContext).load(url).asBitmap().into(1000,1000).get();
-                            if (bitmap!=null){
+                            bitmap = Glide.with(mContext)
+                                    .load(url)
+                                    .asBitmap()
+                                    .into(1000,1000)
+                                    .get();
+                            if (bitmap != null){
                                 saveImage(mContext,bitmap);
                             }
                         }catch (Exception e){
@@ -130,17 +127,17 @@ public class ShowActivity extends BaseActivity {
     }
 
     private void saveImage(Context context,Bitmap bitmap){
-        File file=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsoluteFile();
+        File file = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsoluteFile();
 //        String fileName="FIlEE";
-        File appDir=new File(file.getPath(),"/IMAGE");
+        File appDir = new File(file.getPath(),"/IMAGE");
         if (!appDir.exists()){
             appDir.mkdirs();
         }
-        String fileName=System.currentTimeMillis()+".jpg";
-        File currentFile=new File(appDir,fileName+".jpg");
-        FileOutputStream fos=null;
+        String fileName = System.currentTimeMillis() + ".jpg";
+        File currentFile = new File(appDir,fileName + ".jpg");
+        FileOutputStream fos = null;
         try{
-            fos=new FileOutputStream(currentFile);
+            fos = new FileOutputStream(currentFile);
             bitmap.compress(Bitmap.CompressFormat.JPEG,100,fos);
 
         }catch (FileNotFoundException e){

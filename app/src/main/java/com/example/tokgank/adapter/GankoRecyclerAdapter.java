@@ -1,5 +1,6 @@
 package com.example.tokgank.adapter;
 
+
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.widget.ImageView;
@@ -10,13 +11,14 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.tokgank.R;
 import com.example.tokgank.model.GankoEntity;
 import com.example.tokgank.widget.MyApplication;
+
 import java.util.List;
 
 /**
  * Created by Hugh on 2018/5/30.
  */
 
-public class GankoRecyclerAdapter extends BaseQuickAdapter<GankoEntity.ResultsBean,BaseViewHolder>{
+public class GankoRecyclerAdapter extends BaseQuickAdapter<GankoEntity.ResultsBean,BaseViewHolder> {
 
     public GankoRecyclerAdapter(@LayoutRes int layoutResId, @Nullable List<GankoEntity.ResultsBean> data) {
         super(layoutResId, data);

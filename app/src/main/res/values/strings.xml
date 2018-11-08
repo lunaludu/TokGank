@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">TokGank</string>
     <string name="fragment_me_pay">钱包</string>
-    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar" >-->
-        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
-        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
-        <!--<item name="colorAccent">@color/colorAccent</item>-->
-    <!--</style>-->
+
 </resources>

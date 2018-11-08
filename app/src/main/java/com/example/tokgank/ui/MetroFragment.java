@@ -12,6 +12,13 @@ public class MetroFragment extends BaseFragment {
 
 
     @Override
+    protected boolean getUserVis() {
+        return false;
+    }
+
+
+
+    @Override
     protected int getLayoutId() {
         return R.layout.fragment_me;
     }
